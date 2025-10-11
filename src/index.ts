@@ -1,4 +1,4 @@
-import { type Config, setUser, readConfig } from "./config";
+import { type Config, setUser, readConfig, validateConfig } from "./config.js";
 
 function main() {
   console.log("Hello, world!");
@@ -7,6 +7,7 @@ function main() {
 
   setUser("ryerye");
   const cfg: Config = readConfig();
+  validateConfig(cfg);
   console.log(`Config: ${JSON.stringify(cfg)}`);
 }
 
