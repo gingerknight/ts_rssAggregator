@@ -26,14 +26,14 @@ function writeConfig(cfg: Config): void {
   fs.writeFileSync(filePath, JSON.stringify(cfg));
 }
 
-function parseRawConfig(rawConfig: any): Config {
+function parseRawConfig(rawConfig: string): Config {
   //used by readConfig to validate result of JSON.parse
   const cfg = JSON.parse(rawConfig) as Config;
   return cfg;
 }
 
 export function setUser(userName: string) {
-  let loadedConfig = readConfig();
+  const loadedConfig = readConfig();
   loadedConfig.userName = userName;
   if (!loadedConfig.dbUrl) {
     loadedConfig.dbUrl = "postgres://example";
@@ -46,7 +46,7 @@ export function setUser(userName: string) {
 
 export function validateConfig(config: Config) {
   // Parse Config and Validate with Zod
-  let configResult = configSchema.safeParse(config);
+  const configResult = configSchema.safeParse(config);
   if (configResult.error) {
     console.log("\x1b[41m Invalid Config Schema \x1b[0m");
     throw new Error("Invalid config setup");
