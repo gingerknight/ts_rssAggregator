@@ -7,7 +7,9 @@
     "ci": " tsc --noEmit --noErrorTruncation --pretty --resolveJsonModule -p tsconfig.json",
     "start": "tsx ./src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "pnpm exec eslint 'src/**'"
+    "lint": "pnpm exec eslint 'src/**'",
+    "generate": "drizzle-kit generate",
+    "migrate": "drizzle-kit migrate"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +19,7 @@
   "devDependencies": {
     "@eslint/js": "^9.37.0",
     "@types/node": "^24.3.1",
+    "drizzle-kit": "^0.31.5",
     "eslint": "^9.37.0",
     "globals": "^16.4.0",
     "jiti": "^2.6.1",
@@ -26,6 +29,8 @@
     "zod": "^4.1.12"
   },
   "dependencies": {
-    "chalk": "^5.6.2"
+    "chalk": "^5.6.2",
+    "drizzle-orm": "^0.44.6",
+    "postgres": "^3.4.7"
   }
 }
