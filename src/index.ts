@@ -26,9 +26,17 @@ function main() {
   console.log(chalk.magenta(`Getting args... ${argv}`));
   const args: string[] = argv.slice(2, 4);
   const [cmdName, argument] = args;
-  if (cmdName && argument) {
+  if (!cmdName) {
+    throw new Error(
+      chalk.bgRed("Missing command. Not enough arguments were provided.")
+    );
+  } else if (!argument) {
+    throw new Error(chalk.bgRed("Missing username"));
+  } else if (cmdName && argument) {
     console.log(chalk.cyan(`Cmd Name: ${cmdName} --- Arg: ${argument}`));
     runCommand(registry, cmdName, argument);
+  } else {
+    throw new Error("Something else went wrong...halp");
   }
 
   // load config file and validate
